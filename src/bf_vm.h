@@ -1,4 +1,4 @@
 
 typedef unsigned char byte;
 
-void run(char [], byte [], char []);
+void run(byte [], byte [], byte []);

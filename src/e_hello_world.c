@@ -34,15 +34,15 @@
 
 int main(void) {
 	const char		  ShmName[] = "hello_shm"; 
-	char              buf[400] = { 0 };
+	char              buf[300] = { 0 };
 	e_coreid_t		  coreid;
 	e_memseg_t   	  emem;
 	unsigned          my_row;
 	unsigned          my_col;
 
-	char			program[] = "++++++++++++++++++++++++++++++++++++++++.++++++++++++++++++.+.+.[+.]";
+	byte			program[] = "+.[+.]";
     byte			memory[32] = { 0 };
-	char			output[300] = { 0 };
+	byte			output[300] = { 0 };
 
 
 	// Who am I? Query the CoreID from hardware.
@@ -53,7 +53,7 @@ int main(void) {
 		return EXIT_FAILURE;
 	}
 
-	run(program, memory, output);	
+	run(&program, &memory, &output);	
 
 	// // Attach to the shm segment
 	snprintf(buf, sizeof(buf), output);

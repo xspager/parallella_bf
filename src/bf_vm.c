@@ -9,7 +9,7 @@
 typedef unsigned int u__int;
 
 
-void run(char prog[], byte mem[], char output[])
+void run(byte prog[], byte mem[], byte output[])
 {
 	/* program vars */
 	byte *p; /* Brain'sFuck Memory pointer */
@@ -19,12 +19,11 @@ void run(char prog[], byte mem[], char output[])
 
 	/* BF vars */
 	byte *pos;
-	char *out = &output[0];
+	byte *out = output;
 
 	p = prog; // program pointer point to program memory start
-int out_i = 0;
 
-	pos = &mem[0];
+	pos = mem;
 
 	while(*p){
 		switch(*p){
@@ -44,7 +43,6 @@ int out_i = 0;
 				}
 				else{
 					stack[++stack_l]=p;
-					sprintf(output, "%i", stack_l);
 				}
 				break;
 			case ']':
@@ -58,11 +56,11 @@ int out_i = 0;
 				}
 				break;
 			case '.':
-				output[out_i] = *pos; out++;
+				*out = *pos; out++;
 				break;
 			//case ',': *pos = getchar();	break;
 		}
-		p++; out_i++;
+		p++;
 	}
 }
 
