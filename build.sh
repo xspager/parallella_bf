@@ -24,11 +24,11 @@ case $(uname -p) in
 esac
 
 # Build HOST side application
-${CROSS_PREFIX}gcc src/hello_world.c -o Debug/hello_world.elf ${EINCS} ${ELIBS} -le-hal -le-loader -lpthread
+${CROSS_PREFIX}gcc src/bf_host.c -o Debug/bf_host.elf ${EINCS} ${ELIBS} -le-hal -le-loader -lpthread
 
 # Build DEVICE side program
-e-gcc -T ${ELDF} src/e_hello_world.c src/bf_vm.c -o Debug/e_hello_world.elf -le-lib
+e-gcc -T ${ELDF} src/e_bf.c src/bf_vm.c -o Debug/e_bf.elf -le-lib
 
 # Convert ebinary to SREC file
-e-objcopy --srec-forceS3 --output-target srec Debug/e_hello_world.elf Debug/e_hello_world.srec
+e-objcopy --srec-forceS3 --output-target srec Debug/e_bf.elf Debug/e_bf.srec
 
