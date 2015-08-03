@@ -5,5 +5,5 @@ set -e
 
 cd Debug
 
-./hello_world.elf
+./bf_host.elf
 
